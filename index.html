@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>촉촉한 초코칩 쿠키 - 달콤한 부드러움</title>
+    <style>
+        /* 기본 폰트 및 색상 테마 설정 (노란색, 파란색, 흰색 기반) */
+        :root {
+            --primary-yellow: #FFD214;
+            --primary-blue: #0056B3;
+            --light-blue: #E6F0FA;
+            --white: #FFFFFF;
+            --dark-gray: #333333;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Malgun Gothic', sans-serif;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* 헤더 & 네비게이션 */
+        header {
+            background-color: var(--primary-blue);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-yellow);
+            text-decoration: none;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-yellow);
+        }
+
+        /* 메인 히어로 섹션 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, #FFB800 100%);
+            padding: 100px 50px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--white);
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .hero-img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            margin-bottom: 30px;
+        }
+
+        /* 공통 버튼 스타일 */
+        .btn-buy {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 86, 179, 0.4);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-buy:hover {
+            transform: scale(1.05);
+            background-color: #004085;
+        }
+
+        /* 상세 설명 섹션 (맛과 향) */
+        .intro-section {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: var(--white);
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: var(--primary-blue);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .intro-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .intro-card {
+            background-color: var(--light-blue);
+            padding: 30px;
+            border-radius: 20px;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .intro-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        /* 제품 라인업 및 가격 섹션 */
+        .product-section {
+            padding: 80px 20px;
+            background-color: var(--light-blue);
+            text-align: center;
+        }
+
+        .product-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border: 3px solid var(--primary-yellow);
+            border-radius: 20px;
+            padding: 20px;
+            width: 280px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            color: var(--primary-blue);
+            margin: 10px 0;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #D32F2F;
+            margin: 10px 0;
+        }
+
+        /* 원재료 정보 섹션 */
+        .info-section {
+            padding: 80px 20px;
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .info-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #FFFDF0;
+            border: 2px dashed var(--primary-yellow);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: left;
+        }
+
+        .info-content ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        .info-content li {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        /* 하단 바 */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 30px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">🍪 촉촉한 초코칩</a>
+        <nav>
+            <a href="#intro">맛의 비밀</a>
+            <a href="#products">제품 종류</a>
+            <a href="#ingredients">정직한 재료</a>
+            <a href="https://smartstore.naver.com" target="_blank" style="color: var(--primary-yellow);">주문하기</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <img src="https://via.placeholder.com/500x350/FFD214/0056B3?text=Main+Cookie+Photo" alt="촉촉한 초코칩 쿠키 메인 사진" class="hero-img">
+        <h1>입안 가득 부드럽게 녹아내리는 달콤함!</h1>
+        <p>
+            단단하고 퍽퍽한 쿠키는 이제 그만! <br>
+            **엄선된 리얼 초코칩이 듬뿍** 박혀있어 씹을 때마다 <br>
+            **진하고 촉촉한 초콜릿의 풍미**를 그대로 느낄 수 있습니다.
+        </p>
+        <a href="https://smartstore.naver.com" target="_blank" class="btn-buy">🛒 지금 바로 구매하기</a>
+    </section>
+
+    <section id="intro" class="intro-section">
+        <h2 class="section-title">촉촉한 초코칩이 특별한 이유</h2>
+        <div class="intro-grid">
+            <div class="intro-card">
+                <img src="https://via.placeholder.com/80/0056B3/FFFFFF?text=Illust1" alt="부드러운 식감 일러스트">
+                <h3>독보적인 촉촉함</h3>
+                <p>수분 보유 기술로 완성한 **부드럽고 쫀득한 식감**이 입안을 감쌉니다.</p>
+            </div>
+            <div class="intro-card">
+                <img src="https://via.placeholder.com/80/0056B3/FFFFFF?text=Illust2" alt="진한 초콜릿 일러스트">
+                <h3>깊고 진한 풍미</h3>
+                <p>풍부하게 퍼지는 **천연 바닐라 향**과 고소한 버터의 조화를 느껴보세요.</p>
+            </div>
+            <div class="intro-card">
+                <img src="https://via.placeholder.com/80/0056B3/FFFFFF?text=Illust3" alt="초코칩 일러스트">
+                <h3>리얼 초코칩 듬뿍</h3>
+                <p>표면뿐만 아니라 쿠키 속까지 **초코칩이 아낌없이** 박혀있습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="product-section">
+        <h2 class="section-title">다양하게 즐기는 촉촉한 초코칩</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/280x200/0056B3/FFFFFF?text=Original+Pack" alt="오리지널 패키지 사진">
+                <h3>오리지널 촉촉한 초코칩 (6개입)</h3>
+                <p>언제 어디서나 간편하게 즐기는 기본 홈스타일 패키지</p>
+                <div class="price">2,400원</div>
+                <a href="https://smartstore.naver.com" target="_blank" class="btn-buy" style="padding: 10px 20px; font-size: 15px;">구매</a>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/280x200/0056B3/FFFFFF?text=Big+Pack" alt="대용량 패키지 사진">
+                <h3>촉촉한 초코칩 벌크형 (16개입)</h3>
+                <p>온 가족이 넉넉하게, **가성비 최고의 대용량 패키지**</p>
+                <div class="price">5,800원</div>
+                <a href="https://smartstore.naver.com" target="_blank" class="btn-buy" style="padding: 10px 20px; font-size: 15px;">구매</a>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/280x200/0056B3/FFFFFF?text=Double+Choco" alt="더블초코 패키지 사진">
+                <h3>더블 진한 초코칩 (6개입)</h3>
+                <p>카카오 반죽을 더해 **두 배로 진해진 초코 마니아용** 쿠키</p>
+                <div class="price">2,600원</div>
+                <a href="https://smartstore.naver.com" target="_blank" class="btn-buy" style="padding: 10px 20px; font-size: 15px;">구매</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="ingredients" class="info-section">
+        <h2 class="section-title">안심하고 먹을 수 있는 정직한 재료</h2>
+        <div class="info-content">
+            <p>촉촉한 초코칩 쿠키는 엄선된 원료를 사용하여 엄격한 위생 관리하에 제조됩니다.</p>
+            <ul>
+                <li>**원재료:** 밀가루(밀:미국산), 리얼초코칩[설탕, 식물성유지, 카카오매스(네덜란드산), 코코아파우더], 백설탕, 마가린, 전란액(계란), 물엿, 버터, 천연바닐라추출물.</li>
+                <li>**맛과 향:** 첫 한 입에는 **버터의 고소한 향**이 퍼지며, 부드럽게 씹히는 순간 **초콜릿의 쌉싸름하고 달콤한 풍미**가 입안 가득 가득 채워집니다. 따뜻한 우유나 아메리카노와 함께 드시면 더욱 맛있습니다.</li>
+                <li>**알레르기 유발 물질:** 밀, 계란, 우유, 대두 함유</li>
+            </ul>
+        </div>
+        <div style="margin-top: 50px;">
+            <a href="https://smartstore.naver.com" target="_blank" class="btn-buy">지금 바로 첫 주문하고 할인 받기!</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 촉촉한 초코칩 베이커리 주식회사. All rights reserved.</p>
+        <p>본 페이지는 홍보 목적으로 제작된 데모 웹사이트입니다.</p>
+    </footer>
+
+</body>
+</html>
