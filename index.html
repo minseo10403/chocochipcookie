@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHIC CHOC - 리얼 초코칩의 독보적 아우라</title>
+    <title>오리온 촉촉한 초코칩 - PREMIUM SOFT COOKIE</title>
     
     <style>
+        @import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/ImcreSoojin.woff2');
         @import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2205-2@1.0/Yangjin.woff2');
         @import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Sans_Plain.woff2');
 
         :root {
-            /* 명도를 낮춘 트렌디하고 세련된 프리미엄 컬러 테마 */
-            --dark-blue: #0A2540;       /* 깊고 묵직한 딥블루 */
-            --muted-blue: #1E3A5F;      /* 톤다운된 미디엄 블루 */
-            --deep-yellow: #E5A93C;     /* 명도를 낮춘 고급스러운 소프트 골드 골드옐로우 */
-            --sand-white: #F4F6F8;      /* 차분하고 깔끔한 오프 화이트 */
-            --pure-white: #FFFFFF;
-            --accent-red: #A62626;      /* 고급스러운 버건디빛 레드 */
-            --font-title: 'Yangjin', sans-serif;
-            --font-body: 'Sans_Plain', sans-serif;
+            /* 전용 오리온 지정 테마 컬러 */
+            --orion-yellow: #fce883;
+            --orion-blue: #83bdfc;
+            --orion-brown: #815436;
+            --white: #ffffff;
+            --black: #000000;
+            --gray-sub: #666666;
+
+            /* 폰트 지정 */
+            --font-soojin: 'ImcreSoojin', sans-serif;
+            --font-yangjin: 'Yangjin', sans-serif;
+            --font-partial: 'Sans_Plain', sans-serif;
         }
 
         * {
@@ -27,422 +31,558 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth; /* 메뉴 클릭 시 부드러운 스크롤 이동 */
+        }
+
         body {
-            font-family: var(--font-body);
-            color: var(--dark-blue);
-            background-color: var(--pure-white);
+            font-family: var(--font-partial);
+            color: var(--black);
+            background-color: var(--white);
             line-height: 1.7;
             overflow-x: hidden;
         }
 
-        /* 강조 문구 마케팅 텍스트 스티일 */
-        .highlight {
-            font-family: var(--font-title);
-            color: var(--deep-yellow);
-            font-weight: bold;
-            font-size: 1.1em;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-        }
-
         .bold-text {
             font-weight: 800;
-            color: var(--dark-blue);
-            border-bottom: 3px solid var(--deep-yellow);
-            padding-bottom: 2px;
+            color: var(--orion-brown);
         }
 
-        /* 헤더 디자인 */
+        /* [디저트39 스타일] 상단 고정형 슬림 네비게이션 */
         header {
-            background-color: var(--dark-blue);
-            padding: 20px 40px;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(129, 84, 54, 0.1);
+            padding: 25px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
-        header .logo {
-            font-family: var(--font-title);
-            font-size: 28px;
-            color: var(--deep-yellow);
+        .logo {
+            font-family: var(--font-yangjin);
+            font-size: 24px;
+            color: var(--orion-brown);
             text-decoration: none;
-            letter-spacing: 1px;
+            letter-spacing: -1px;
         }
 
         nav a {
-            color: var(--pure-white);
+            font-family: var(--font-partial);
+            color: var(--black);
             text-decoration: none;
-            margin-left: 25px;
-            font-size: 15px;
-            transition: all 0.3s ease;
+            margin-left: 35px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s;
         }
 
         nav a:hover {
-            color: var(--deep-yellow);
+            color: var(--orion-blue);
         }
 
-        /* 히어로 섹션 (비대칭형 역동적 레이아웃) */
-        .hero {
+        /* 공통 섹션 스타일 (디저트39 특유의 넓은 여백과 차분함 구현) */
+        section {
+            padding: 140px 10% 100px 10%;
+            min-height: 80vh;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            font-family: var(--font-yangjin);
+            font-size: 38px;
+            color: var(--orion-brown);
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .section-title span {
+            font-size: 16px;
+            color: var(--orion-blue);
+            display: block;
+            margin-top: 8px;
+            font-family: var(--font-partial);
+            letter-spacing: 3px;
+        }
+
+        /* 1. 메인 히어로 섹션 (첫 화면 - 오직 멘트와 애니메이션 그래픽만 배치) */
+        .hero-section {
+            padding: 0 10%;
+            height: 100vh;
+            background: linear-gradient(135deg, #f4f8ff 0%, var(--white) 100%);
+            display: flex;
+            flex-direction: row;
             align-items: center;
             justify-content: space-between;
-            min-height: 85vh;
-            background: linear-gradient(135deg, var(--dark-blue) 60%, var(--muted-blue) 100%);
-            padding: 60px 10%;
-            color: var(--pure-white);
-            position: relative;
         }
 
         .hero-text {
             flex: 1;
-            max-width: 550px;
-            z-index: 2;
+            max-width: 650px;
+            animation: fadeInUp 1.5s ease-out;
         }
 
+        /* 크고 굵은 아임크리수진체 후킹 멘트 */
         .hero-text h1 {
-            font-family: var(--font-title);
-            font-size: 45px;
-            line-height: 1.3;
-            margin-bottom: 25px;
-            color: var(--pure-white);
+            font-family: var(--font-soojin);
+            font-size: 56px;
+            line-height: 1.35;
+            color: var(--black);
         }
 
         .hero-text h1 span {
-            color: var(--deep-yellow);
+            color: var(--orion-brown);
+            background: linear-gradient(to top, var(--orion-yellow) 40%, transparent 40%);
+            padding: 0 5px;
         }
 
-        .hero-text p {
-            font-size: 17px;
-            margin-bottom: 35px;
-            color: #CCD6E0;
-        }
-
-        .hero-image-container {
+        /* 디저트39 스타일의 잔잔하고 거대한 그래픽 모션 콘셉트 */
+        .hero-animation-container {
             flex: 1;
             display: flex;
             justify-content: center;
+            align-items: center;
             position: relative;
+            height: 600px;
+            animation: slowZoomIn 20s infinite linear alternate; /* 천천히 커지는 베이스 연출 */
         }
 
-        .hero-img {
-            width: 100%;
-            max-width: 420px;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* 역동적인 유기적 곡선 형태 */
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            animation: float 6s ease-in-out infinite;
+        .milk-glass {
+            width: 380px;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 50% 50% 40% 40%;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+            position: absolute;
+            bottom: 40px;
+            z-index: 1;
+            border: 10px solid var(--white);
         }
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+        .dropping-cookie {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 2;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            /* 부드럽고 고급스럽게 떨어지는 프레임 속도 조정 */
+            animation: premiumDropIntoMilk 4s cubic-bezier(0.25, 1, 0.5, 1) infinite;
         }
 
-        /* 고정 구매 버튼 */
-        .btn-buy {
+        .splash-wave {
+            position: absolute;
+            bottom: 180px;
+            width: 200px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 50%;
+            z-index: 3;
+            opacity: 0;
+            animation: premiumSplash 4s ease-out infinite;
+        }
+
+        /* 애니메이션 키프레임 (천천히, 정교하게 결합) */
+        @keyframes slowZoomIn {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.06); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes premiumDropIntoMilk {
+            0% { transform: translateY(-320px) rotate(0deg); opacity: 0; }
+            15% { opacity: 1; }
+            50% { transform: translateY(60px) rotate(35deg); opacity: 1; }
+            55% { transform: translateY(90px) rotate(40deg) scale(0.7); opacity: 0; }
+            100% { transform: translateY(90px) rotate(40deg) scale(0.7); opacity: 0; }
+        }
+
+        @keyframes premiumSplash {
+            0%, 48% { transform: scale(0.4); opacity: 0; }
+            52% { transform: scale(1.3); opacity: 1; border: 3px solid var(--white); }
+            75% { transform: scale(2.2); opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        /* 공통 프리미엄 버튼 */
+        .btn-primary {
             display: inline-block;
-            background-color: var(--deep-yellow);
-            color: var(--dark-blue);
-            font-family: var(--font-title);
-            padding: 16px 35px;
-            font-size: 18px;
+            background-color: var(--orion-brown);
+            color: var(--white);
+            font-family: var(--font-yangjin);
+            padding: 15px 35px;
+            font-size: 16px;
             text-decoration: none;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(229, 169, 61, 0.3);
+            border-radius: 30px;
+            border: 2px solid var(--orion-yellow);
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .btn-buy:hover {
-            background-color: var(--pure-white);
-            color: var(--dark-blue);
+        .btn-primary:hover {
+            background-color: var(--orion-yellow);
+            color: var(--orion-brown);
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255,255,255,0.2);
         }
 
-        /* 칙촉 명성 가치 소개 섹션 (나무위키 고증 반영) */
-        .wiki-section {
-            padding: 100px 10%;
-            background-color: var(--sand-white);
-            display: flex;
+        /* 2. 브랜드 스토리 (History & Ingredients) */
+        .story-section {
+            background-color: var(--white);
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
             align-items: center;
-            gap: 50px;
-            flex-wrap: wrap;
         }
 
-        .wiki-left {
-            flex: 1;
-            min-width: 300px;
+        .story-text p {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 25px;
         }
 
-        .wiki-left h2 {
-            font-family: var(--font-title);
-            font-size: 36px;
-            color: var(--dark-blue);
-            margin-bottom: 20px;
+        .toggle-box {
+            margin-top: 35px;
+            background-color: #fffde8;
+            border: 1px solid var(--orion-yellow);
+            padding: 25px;
+            border-radius: 12px;
         }
 
-        .wiki-right {
-            flex: 1;
-            min-width: 300px;
-            background: var(--pure-white);
-            padding: 40px;
-            border-left: 5px solid var(--dark-blue);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border-radius: 0 15px 15px 0;
+        .toggle-content {
+            display: none;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #555;
+            animation: fadeInSub 0.4s ease-in-out forwards;
         }
 
-        /* 상품 가로 슬라이더 캐러셀 섹션 */
-        .slider-section {
-            padding: 100px 0;
-            background-color: var(--pure-white);
+        @keyframes fadeInSub {
+            from { opacity: 0; } to { opacity: 1; }
+        }
+
+        /* 3. 비교 섹션 (MOIST vs CRISPY) */
+        .vs-section {
+            background-color: #f8fba2; /* 연한 옐로우 배경 톤 변경 */
+            background: linear-gradient(180deg, var(--white) 0%, #fffdec 100%);
+        }
+
+        .vs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .vs-card {
+            background-color: var(--white);
+            border-radius: 24px;
+            padding: 45px 35px;
             text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .vs-card.moist { border: 3px solid var(--orion-brown); }
+
+        .vs-card h3 {
+            font-family: var(--font-yangjin);
+            font-size: 24px;
+            color: var(--orion-brown);
+            margin-bottom: 25px;
+        }
+
+        .vs-list {
+            list-style: none;
+            text-align: left;
+        }
+
+        .vs-list li {
+            font-size: 15px;
+            margin-bottom: 15px;
+            padding-left: 25px;
             position: relative;
         }
 
-        .slider-section h2 {
-            font-family: var(--font-title);
-            font-size: 36px;
-            margin-bottom: 15px;
+        .vs-list li::before {
+            content: '▫️';
+            position: absolute;
+            left: 0;
+            color: var(--orion-blue);
         }
 
-        .slider-container {
+        /* 4. 제품 종류 가로 슬라이더 (라인업) */
+        .lineup-section {
+            background-color: #f4f8ff;
+        }
+
+        .slider-outer {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .slider-inner {
             display: flex;
             overflow-x: auto;
             scroll-behavior: smooth;
-            padding: 30px 50px;
             gap: 30px;
-            scrollbar-width: none; /* 파이어폭스 스크롤 숨김 */
+            padding: 20px 5px;
+            scrollbar-width: none;
         }
 
-        .slider-container::-webkit-scrollbar {
-            display: none; /* 크롬/사파리 스크롤 숨김 */
-        }
+        .slider-inner::-webkit-scrollbar { display: none; }
 
         .product-card {
-            flex: 0 0 320px;
-            background: var(--pure-white);
-            border: 1px solid #E1E8ED;
+            flex: 0 0 330px;
+            background-color: var(--white);
             border-radius: 16px;
             padding: 25px;
-            text-align: left;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .product-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-radius: 12px;
+            border-radius: 10px;
             margin-bottom: 20px;
         }
 
         .product-card h3 {
-            font-family: var(--font-title);
+            font-family: var(--font-yangjin);
             font-size: 20px;
+            color: var(--orion-brown);
             margin-bottom: 10px;
-            color: var(--dark-blue);
         }
 
-        .product-card p {
-            font-size: 14px;
-            color: #555;
-            height: 60px;
-            margin-bottom: 15px;
-        }
-
-        .product-card .price {
-            font-family: var(--font-title);
-            font-size: 22px;
-            color: var(--accent-red);
-            margin-bottom: 15px;
-        }
-
-        .slider-arrow {
-            background-color: var(--dark-blue);
-            color: var(--pure-white);
-            border: none;
+        .arrow-btn {
+            background-color: var(--white);
+            color: var(--orion-brown);
+            border: 1px solid rgba(0,0,0,0.1);
             width: 50px;
             height: 50px;
             border-radius: 50%;
             font-size: 20px;
             cursor: pointer;
             position: absolute;
-            top: 55%;
+            top: 50%;
             transform: translateY(-50%);
             z-index: 10;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .arrow-left { left: 20px; }
-        .arrow-right { right: 20px; }
+        .arrow-left { left: -25px; }
+        .arrow-right { right: -25px; }
 
-        /* 재료 및 정보 (스플릿 레이아웃) */
-        .details-section {
-            padding: 100px 10%;
-            background-color: var(--dark-blue);
-            color: var(--pure-white);
+        /* 5. 즐기는 방식 (Tips) */
+        .tips-section {
+            background-color: var(--white);
+            text-align: center;
         }
 
-        .details-grid {
+        .tips-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
         }
 
-        .details-box {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 35px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .tips-item {
+            border: 1px solid #eee;
+            padding: 40px 25px;
+            border-radius: 16px;
+            background-color: var(--white);
+            transition: border 0.3s;
         }
 
-        .details-box h3 {
-            font-family: var(--font-title);
-            color: var(--deep-yellow);
-            margin-bottom: 15px;
-            font-size: 22px;
+        .tips-item:hover { border-color: var(--orion-blue); }
+
+        .tips-item h3 {
+            font-family: var(--font-yangjin);
+            color: var(--orion-brown);
+            margin-top: 15px;
+            margin-bottom: 10px;
         }
 
-        /* 하단 영역 */
+        /* 푸터 */
         footer {
-            background-color: #051424;
-            color: #7A8B9E;
+            background-color: #111;
+            color: #777;
             text-align: center;
-            padding: 40px 20px;
+            padding: 50px 20px;
             font-size: 13px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid #222;
         }
 
-        @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; padding: 60px 20px; }
-            .hero-text { margin-bottom: 40px; }
-            .wiki-section { flex-direction: column; }
+        @media (max-width: 950px) {
+            .hero-section { flex-direction: column; text-align: center; padding-top: 100px; }
+            .hero-animation-container { height: 400px; width: 100%; }
+            .milk-glass { width: 280px; height: 280px; bottom: 10px; }
+            .dropping-cookie { width: 110px; height: 110px; }
+            .vs-grid, .story-grid { grid-template-columns: 1fr; }
+            header { padding: 20px 5%; }
+            nav a { margin-left: 15px; font-size: 12px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo">CHIC CHOC</a>
+        <a href="#home" class="logo">ORION SOFT</a>
         <nav>
-            <a href="#origin">출시 비화</a>
-            <a href="#products">라인업</a>
-            <a href="#ingredients">비밀 성분</a>
-            <a href="https://smartstore.naver.com" target="_blank" style="font-family: var(--font-title); color: var(--deep-yellow);">⚡ 한정특가 구매</a>
+            <a href="#story">STORY & INGREDIENTS</a>
+            <a href="#vs">CHIC CHOC vs CRISPY</a>
+            <a href="#lineup">PRODUCT LINEUP</a>
+            <a href="#tips">SWEET TIPS</a>
+            <a href="https://smartstore.naver.com" target="_blank" class="bold-text" style="color: var(--orion-blue);">SHOP 🛒</a>
         </nav>
     </header>
 
-    <section class="hero">
+    <section id="home" class="hero-section">
         <div class="hero-text">
-            <h1>1996년 이래로,<br>초코칩 쿠키의 기준은 오직 <span>칙촉</span>이었다.</h1>
-            <p>
-                단순히 '초코맛 향'을 내는 퍽퍽한 과자와 비교를 거부합니다. <br>
-                입안 가득 거칠게 씹히는 <span class="highlight">통째로 박힌 리얼 초코칩</span>과 <br>
-                오직 홈메이드 스타일 공법으로만 구현할 수 있는 <span class="bold-text">진하고 부드러운 쿠키의 정석</span>을 지금 경험하세요.
-            </p>
-            <a href="https://smartstore.naver.com" target="_blank" class="btn-buy">🛒 지금 24시간 한정 혜택가로 구매</a>
+            <h1>눅눅함이 아니야!<br>이게 바로 진짜 <span>촉촉함</span>의 클래스!</h1>
         </div>
-        <div class="hero-image-container">
-            <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&q=80&w=600" alt="고급 리얼 초코칩 쿠키 사진" class="hero-img">
-        </div>
-    </section>
-
-    <section id="origin" class="wiki-section">
-        <div class="wiki-left">
-            <h2>알고 먹으면 더 중독되는<br>Chic Choc의 진짜 비화</h2>
-            <img src="https://images.unsplash.com/photo-1558961312-50345c24199c?auto=format&fit=crop&q=80&w=500" alt="고급 쿠키 일러스트 감성" style="width:100%; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.05); margin-top:20px;">
-        </div>
-        <div class="wiki-right">
-            <p style="font-size:15px; color:#555; margin-bottom:15px;">🔍 <b>어원속에 담긴 자부심</b></p>
-            <p style="margin-bottom: 20px;">
-                많은 분들이 잘 모르는 사실, 칙촉의 앞글자 '칙'은 사실 영어 <span class="bold-text">Chic(세련된, 멋진)</span>에서 유래되었습니다. 최고의 디저트라는 아이덴티티를 담아 <b>Chic + Chocolate(초콜릿)</b>의 합성어로 설계된 품격 있는 시그니처 쿠키입니다.
-            </p>
-            <p style="font-size:15px; color:#555; margin-bottom:15px;">🍪 <b>비교 불가능한 오리지널리티</b></p>
-            <p>
-                1996년 출시 초기부터 건조하고 딱딱했던 기존 제과 시장에 <span class="highlight">촉촉하고 쫀득한 식감</span> 파란을 일으켰습니다. 타사 대비 압도적인 <span class="bold-text">카카오 매스 및 리얼 초코칩 함량</span>으로 국산 프리미엄 쿠키 계보의 정상 자리를 지키고 있습니다.
-            </p>
-        </div>
-    </section>
-
-    <section id="products" class="slider-section">
-        <h2>현재 가장 사랑받는 라인업</h2>
-        <p style="color:#666; margin-bottom: 30px;">👉 좌우로 넘기거나 마우스 휠로 밀어서 전체 종류를 확인해보세요!</p>
         
-        <button class="slider-arrow arrow-left" onclick="moveSlider(-1)">❮</button>
-        <button class="slider-arrow arrow-right" onclick="moveSlider(1)">❯</button>
+        <div class="hero-animation-container">
+            <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&q=80&w=400" alt="신선한 우유 한 잔" class="milk-glass">
+            <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&q=80&w=300" alt="오리온 촉촉한 초코칩 원본" class="dropping-cookie">
+            <div class="splash-wave"></div>
+        </div>
+    </section>
 
-        <div class="slider-container" id="productSlider">
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&q=80&w=400" alt="오리지널 쿠키">
-                <h3>오리지널 칙촉</h3>
-                <p>25년이 넘는 세월 동안 사랑받은 근본. 큼직한 정통 초코칩의 알찬 밀도를 느껴보세요.</p>
-                <div class="price">2,400원</div>
-                <a href="https://smartstore.naver.com" target="_blank" class="btn-buy" style="padding:10px 15px; font-size:14px; width:100%; text-align:center;">바로 구매</a>
+    <section id="story" class="story-section">
+        <h2 class="section-title">THE ORIGINAL HERITAGE <span>브랜드 스토리 & 역사</span></h2>
+        <div class="story-grid">
+            <div class="story-text">
+                <p>1997년 출시된 <span class="bold-text">오리온 촉촉한 초코칩</span>은 거칠고 건조하던 기존 국내 쿠키 시장의 기준을 깨부수고 부드러움의 미학을 제시한 기념비적인 소프트 쿠키입니다.</p>
+                <p>전문 제과점에서 갓 구워낸 수분 가득한 질감을 대량 공정으로 재현하기 위해 수년간의 배합 연구 끝에 독자적인 <span class="bold-text">수분 제어 밸런스 공법</span>을 탄생시켰습니다.</p>
+                
+                <div class="toggle-box">
+                    <button class="btn-primary" style="padding: 8px 20px; font-size: 14px;" onclick="toggleIngredients()">🔍 성분 및 사용 재료 확인하기</button>
+                    <div id="ingredientsContent" class="toggle-content">
+                        <p><b>주요 성분:</b> 미국산 우수 영양강화 밀가루, 네덜란드산 코코아빈으로 가공한 리얼 카카오 초코칩(초콜릿 청크), 유가공 버터, 신선한 대한민국 국산 전란액, 천연 바닐라 추출액 가루.</p>
+                    </div>
+                </div>
             </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1603532648955-039310d9ed75?auto=format&fit=crop&q=80&w=400" alt="티라미수 쿠키">
-                <h3>칙촉 티라미수</h3>
-                <p>진한 에스프레소 향을 품은 반죽과 크림치즈칩의 조화로 완성된 부드러운 카페 디저트 버전.</p>
-                <div class="price">2,800원</div>
-                <a href="https://smartstore.naver.com" target="_blank" class="btn-buy" style="padding:10px 15px; font-size:14px; width:100%; text-align:center;">바로 구매</a>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&q=80&w=400" alt="몬스터 쿠키">
-                <h3>몬스터 칙촉 쇼콜라</h3>
-                <p>압도적인 크기! 바닥면에 <span class="bold-text">통째로 입힌 초콜릿 코팅</span>으로 극강의 달콤함을 선사하는 괴물 쿠키.</p>
-                <div class="price">1,500원 (단품)</div>
-                <a href="https://smartstore.naver.com" target="_blank" class="btn-buy" style="padding:10px 15px; font-size:14px; width:100%; text-align:center;">바로 구매</a>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&q=80&w=400" alt="브라우니">
-                <h3>칙촉 브라우니</h3>
-                <p>쿠키의 바삭함과 브라우니 특유의 <span class="highlight">꾸덕하고 깊은 무스 식감</span>을 절묘하게 융합한 한정판.</p>
-                <div class="price">3,000원</div>
-                <a href="https://smartstore.naver.com" target="_blank" class="btn-buy" style="padding:10px 15px; font-size:14px; width:100%; text-align:center;">바로 구매</a>
+            <div style="text-align: center;">
+                <img src="https://images.unsplash.com/photo-1558961312-50345c24199c?auto=format&fit=crop&q=80&w=500" alt="프리미엄 베이킹 히스토리" style="width: 100%; border-radius: 16px;">
             </div>
         </div>
     </section>
 
-    <section id="ingredients" class="details-section">
-        <h2 style="font-family: var(--font-title); font-size:36px; text-align:center;">정직함이 만드는 압도적 격차</h2>
-        <div class="details-grid">
-            <div class="details-box">
-                <h3>원재료의 클래스</h3>
-                <p>리얼 초코칩[설탕, 식물성유지, 카카오매스(네덜란드 정통 가공), 코코아파우더], 프리미엄 가공버터(우유유지방), 전란액(국산 신선 계란), 영양강화밀가루 함유.</p>
+    <section id="vs" class="vs-section">
+        <h2 class="section-title">CHOOSE YOUR TEXTURE <span>촉촉함과 바삭함의 명확한 차이점 비교</span></h2>
+        <div class="vs-grid">
+            <div class="vs-card moist">
+                <h3>촉촉한 초코칩 (Moist)</h3>
+                <ul class="vs-list">
+                    <li><b>독보적 공법:</b> 고유 수분을 가두는 특수 홈메이드 스타일 소프트 베이킹</li>
+                    <li><b>리얼 초코칩 크기:</b> 입안 가득 씹히는 큼직한 프리미엄 초콜릿 청크</li>
+                    <li><b>식감 밸런스:</b> 쫀득하고 묵직하여 브라우니처럼 부드럽게 녹아내리는 밀도</li>
+                </ul>
             </div>
-            <div class="details-box">
-                <h3>독보적인 향과 미각</h3>
-                <p>쿠키 베이스에 감도는 은은한 <span class="highlight">천연 바닐라 추출물 향</span>이 초콜릿 고유의 쌉싸름함을 감싸 안아 마지막 한 입까지 깔끔하고 고급스러운 단맛을 유지합니다.</p>
-            </div>
-            <div class="details-box">
-                <h3>안심 보증 안내</h3>
-                <p>HACCP 안전관리인증 제조 시설 생산. 알레르기 유발 유의 물질: 밀, 계란, 우유, 대두 혼합 가공 시설 생산 관리 철저.</p>
+            <div class="vs-card">
+                <h3>일반 초코칩 쿠키 (Crispy)</h3>
+                <ul class="vs-list">
+                    <li><b>전통적 공법:</b> 수분을 완전히 날려 가볍고 경쾌함을 살린 클래식 로스팅</li>
+                    <li><b>리얼 초코칩 크기:</b> 전체 반죽 사이에 조화롭게 스며든 아담한 미니 칩</li>
+                    <li><b>식감 밸런스:</b> 와작하고 바스러지며 티타임 스낵에 최적화된 청량한 바삭함</li>
+                </ul>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 60px;">
-            <a href="https://smartstore.naver.com" target="_blank" class="btn-buy" style="font-size:20px; padding: 20px 50px;">🔥 한정 수량 패키지 선점하기</a>
+    </section>
+
+    <section id="lineup" class="lineup-section">
+        <h2 class="section-title">OUR DELICIOUS LINEUP <span>종류별 원본 제품 컬렉션</span></h2>
+        <div class="slider-outer">
+            <button class="arrow-btn arrow-left" onclick="moveSlider(-1)">❮</button>
+            <button class="arrow-btn arrow-right" onclick="moveSlider(1)">❯</button>
+            <div class="slider-inner" id="mainSlider">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&q=80&w=400" alt="오리지널">
+                    <h3>오리지널 촉촉한 초코칩</h3>
+                    <p style="font-size: 13px; color: var(--gray-sub); margin-bottom: 15px;">1997 헤리티지를 가득 담은 원조 시그니처 소프트 카카오 쿠키.</p>
+                    <a href="https://smartstore.naver.com" target="_blank" class="btn-primary" style="padding: 8px; font-size: 13px; display: block; text-align: center; border-radius: 6px;">구매 페이지 연결</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&q=80&w=400" alt="브라우니">
+                    <h3>딥 카카오 브라우니</h3>
+                    <p style="font-size: 13px; color: var(--gray-sub); margin-bottom: 15px;">카카오 함량을 대폭 늘려 진득하고 꾸덕한 브라우니 질감을 완성한 라인.</p>
+                    <a href="https://smartstore.naver.com" target="_blank" class="btn-primary" style="padding: 8px; font-size: 13px; display: block; text-align: center; border-radius: 6px;">구매 페이지 연결</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1603532648955-039310d9ed75?auto=format&fit=crop&q=80&w=400" alt="티라미수">
+                    <h3>티라미수 에스프레소 칩</h3>
+                    <p style="font-size: 13px; color: var(--gray-sub); margin-bottom: 15px;">에스프레소 향이 맴도는 도우 속에 크림치즈칩이 어우러진 카페 스타일.</p>
+                    <a href="https://smartstore.naver.com" target="_blank" class="btn-primary" style="padding: 8px; font-size: 13px; display: block; text-align: center; border-radius: 6px;">구매 페이지 연결</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&q=80&w=400" alt="대용량">
+                    <h3>패밀리 대용량 메가 팩</h3>
+                    <p style="font-size: 13px; color: var(--gray-sub); margin-bottom: 15px;">사무실 탕비실 및 파티용 스낵으로 끊김 없이 넉넉하게 보관 가능한 빅 사이즈.</p>
+                    <a href="https://smartstore.naver.com" target="_blank" class="btn-primary" style="padding: 8px; font-size: 13px; display: block; text-align: center; border-radius: 6px;">구매 페이지 연결</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tips" class="tips-section">
+        <h2 class="section-title">TASTING RECIPE <span>소비자가 직접 증명한 가장 맛있게 먹는 법</span></h2>
+        <div class="tips-container">
+            <div class="tips-item">
+                <div style="font-size: 35px;">🥛</div>
+                <h3>Dipping Milk</h3>
+                <p>하얗고 신선한 우유에 쿠키를 3초간 머금게 한 뒤 드셔보세요. 부드러움의 시너지가 극대화됩니다.</p>
+            </div>
+            <div class="tips-item">
+                <div style="font-size: 35px;">⚡</div>
+                <h3>10s Microwave</h3>
+                <p>전자레인지에 포장지를 벗겨 딱 10초만 웜업하면, 속 안의 카카오칩이 사르르 녹아 갓 구운 상태가 됩니다.</p>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 CHIC CHOC PREMIUM BAKERY CO. All rights reserved.</p>
-        <p style="margin-top:10px; font-size:11px; opacity:0.6;">본 웹페이지는 나무위키 아카이브를 바탕으로 커스텀 브랜딩되어 구현된 퍼블리싱 데모 페이지입니다.</p>
+        <p>&copy; 2026 ORION PASTRIES. DELUXE PORTFOLIO DEPLOYMENT.</p>
     </footer>
 
     <script>
+        // 1. 재료 토글 기능 함수
+        function toggleIngredients() {
+            const container = document.getElementById('ingredientsContent');
+            container.style.display = (container.style.display === 'block') ? 'none' : 'block';
+        }
+
+        // 2. 가로 캐러셀 한 칸씩 제어 함수
         function moveSlider(direction) {
-            const slider = document.getElementById('productSlider');
-            const scrollAmount = 350; // 한 번에 이동할 너비
-            slider.scrollLeft += (direction * scrollAmount);
+            const slider = document.getElementById('mainSlider');
+            const cardWidth = 360; // 카드 넓이 330px + 간격 30px 계산
+            slider.scrollLeft += (direction * cardWidth);
         }
     </script>
 </body>
